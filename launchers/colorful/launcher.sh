@@ -16,9 +16,9 @@ dir="$HOME/.config/rofi/launchers/colorful"
 
 # dark
 ALPHA="#00000000"
-BG="#282C3Cff"
-FG="#FFFFFFff"
-SELECT="#282C3Cff"
+BG="#2D3144ff"
+FG="#FEFFF1ff"
+SELECT="#2D3144ff"
 
 # light
 #ALPHA="#00000000"
