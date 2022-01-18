@@ -42,11 +42,12 @@ logout=""
 
 # Confirmation
 confirm_exit() {
-	rofi -dmenu\
-		-i\
-		-no-fixed-num-lines\
-		-p "Are You Sure? : "\
-		-theme $dir/confirm.rasi
+	#rofi -dmenu\
+	#	-i\
+	#	-no-fixed-num-lines\
+	#	-p "Are You Sure? : "\
+	#	-theme $dir/confirm.rasi
+    echo "yes"
 }
 
 # Message
@@ -81,7 +82,7 @@ case $chosen in
         ;;
     $lock)
 		if [[ -f $HOME/.config/i3/lock.sh ]]; then
-		        sh $HOME/.config/i3/lock.sh 	
+		        sh $HOME/.config/i3/lock.sh
 		elif [[ -f /usr/bin/i3lock ]]; then
 			i3lock
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
