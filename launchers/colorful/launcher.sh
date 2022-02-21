@@ -49,4 +49,24 @@ EOF
 #themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 #theme="${themes[$(( $RANDOM % 12 ))]}"
 
-rofi -no-lazy-grab -show combi -combi-modi window,drun,combi -theme $dir/"$theme"
+DEFAULT=True
+for c in "$@"
+do
+  DEFAULT=False
+  if [ "$c" == "drun" ]
+  then
+    rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
+  elif [ "$c" == "window" ]
+  then
+    rofi -no-lazy-grab -show window -modi window -theme $dir/"$theme"
+  elif [ "$c" == "run" ]
+  then
+    rofi -no-lazy-grab -show run -modi run -theme $dir/"$theme" -no-show-icons
+  fi
+done
+
+
+if [ $DEFAULT == True ]
+then
+  rofi -no-lazy-grab -show combi -combi-modi window,drun -theme $dir/"$theme"
+fi
