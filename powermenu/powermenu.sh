@@ -15,8 +15,8 @@
 # full_circle     full_square     full_rounded     full_alt
 # row_circle      row_square      row_rounded      row_alt
 
-theme="card_square"
-dir="$HOME/.config/rofi/powermenu"
+theme="style_3"
+dir="$HOME/.config/rofi/launchers/text"
 
 # random colors
 styles=($(ls -p --hide="colors.rasi" $dir/styles))
@@ -34,11 +34,11 @@ uptime=$(uptime -p | sed -e 's/up //g')
 rofi_command="rofi -theme $dir/$theme"
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown=" Shutdown"
+reboot=" Reboot"
+lock=" Lock"
+suspend=" Suspend"
+logout=" Logout"
 
 # Confirmation
 confirm_exit() {

@@ -10,20 +10,31 @@
 #
 # style_1     style_2     style_3     style_4     style_5     style_6     style_7
 
-theme="style_2"
-
 dir="$HOME/.config/rofi/launchers/text"
 styles=($(ls -p --hide="colors.rasi" $dir/styles))
-color="${styles[$(( $RANDOM % 10 ))]}"
+color=catppuccin
 
 # comment this line to disable random colors
 sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 
 # comment these lines to disable random style
-themes=($(ls -p --hide="launcher.sh" --hide="styles" $dir))
-theme="${themes[$(( $RANDOM % 7 ))]}"
+#themes=($(ls -p --hide="launcher.sh" --hide="styles" $dir))
+#theme="${themes[$(( $RANDOM % 7 ))]}"
 
-rofi -no-lazy-grab -show drun \
--modi run,drun,window \
--theme $dir/"$theme"
-
+if [[ "$DESKTOP_SESSION" == "i3"  ||  "$DESKTOP_SESSION" == "/usr/share/xsessions/i3" ]]; then
+  theme="style_3"
+  
+  rofi -no-lazy-grab -show $1 \
+  -modi run,drun,window \
+  -theme $dir/"$theme" \
+  -icons "Papirus" \
+  -show-icons
+elif [[ "$DESKTOP_SESSION" == "sway"  ||  "$DESKTOP_SESSION" == "/usr/share/wayland-sessions/sway" ]]; then
+  theme="style_3_sway"
+  
+  rofi -no-lazy-grab -show $1 \
+  -modi run,drun \
+  -theme $dir/"$theme" \
+  -icons "Papirus" \
+  -show-icons
+ fi
